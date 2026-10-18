@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Damage and difficulty | orBIT Wiki</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <button class="menu" aria-label="Menu" onclick="document.body.classList.toggle('nav-open')">&#9776;</button>
+  <a class="brand" href="index.html"><span class="or">or</span><span class="bit">BIT</span> <span class="wiki">Wiki</span></a>
+  <div class="search"><input id="q" type="search" placeholder="Search the wiki" autocomplete="off"><div id="results"></div></div>
+</header>
+<div class="layout">
+<nav class="side"><div class="nav-group"><div class="nav-head">Start here</div><a class="" href="index.html">Main page</a><a class="" href="getting-started.html">How to play</a><a class="" href="full-game.html">Free and full game</a></div><div class="nav-group"><div class="nav-head">Mechanics</div><a class="" href="runs.html">Runs</a><a class="" href="leveling.html">Leveling and cards</a><a class="on" href="damage.html">Damage and difficulty</a><a class="" href="ultimates.html">Ultimates</a></div><div class="nav-group"><div class="nav-head">Items</div><a class="" href="weapons.html">Weapons</a><a class="" href="systems.html">Systems</a><a class="" href="evolutions.html">Evolutions</a></div><div class="nav-group"><div class="nav-head">World</div><a class="" href="ships.html">Ships</a><a class="" href="planets.html">Planets</a><a class="" href="enemies.html">Enemies</a><a class="" href="bosses.html">Bosses</a></div><div class="nav-group"><div class="nav-head">Progress</div><a class="" href="hangar.html">Hangar</a><a class="" href="unlocks.html">Unlocks and secrets</a></div></nav>
+<main>
+<div class="kind">Mechanic</div>
+<h1>Damage and difficulty</h1>
+<h2>Your damage</h2>
+<p>Every weapon has a base damage (see each weapon's page). The game multiplies it like this:</p>
+<pre class="formula">damage = base
+       × ship damage                (Vanguard 1, Wasp 1, Bulwark 0.9, Specter 1, Nova 1.25, Comet 1.1, Warden 1)
+       × (1 + 15% × Payload level)
+       × (1 + 5% × Might upgrades)  (Hangar)
+       × (1 + 2% × Overdrive count)</pre>
+<h3>On top of that</h3>
+<table class="wikitable "><thead><tr><th>Effect</th><th>What it does</th></tr></thead><tbody><tr><td>Critical hits</td><td><a href="system-targeting.html">Targeting</a> gives an 8% chance per level for a hit to deal <b>double</b> damage. Gauss Lance and Kill Sat always crit.</td></tr><tr><td>Frozen enemies</td><td>Enemies frozen by the <a href="weapon-stasis.html">Stasis Ray</a> take <b>+40%</b> damage.</td></tr><tr><td>Not on screen yet</td><td>Enemies just above the top of the screen can be hit, but take <b>half</b> damage until they come into view.</td></tr><tr><td>Area</td><td><a href="system-amplifier.html">Amplifier</a> makes blasts, beams, orbs, fields and pools 10% bigger per level.</td></tr><tr><td>Fire rate</td><td>Ship fire rate × (1 + 10% × <a href="system-overclock.html">Overclock</a> level). This shortens every weapon's cooldown.</td></tr><tr><td>Duration</td><td><a href="system-stabilizer.html">Stabilizer</a> makes beams, orbs, pools, freezes and bounces last 12% longer per level.</td></tr></tbody></table>
+<h2>How enemies scale</h2>
+<p>The game runs on a <b>difficulty clock</b> that moves 1.25 times faster than real time. At real minute <i>t</i>, the difficulty minute is <i>m = 1.25 × t</i>.</p>
+<pre class="formula">enemy HP      × (1 + 0.2 m + 0.04 m²)
+bullet speed  × (1 + 0.025 m) × planet bullet speed   (max 1.5)
+fire rate     × (1 + 0.05 m)  × planet fire rate      (max 1.9)</pre>
+<table class="wikitable "><thead><tr><th>Time</th><th>Difficulty minute</th><th>Enemy HP</th><th>Bullet speed</th><th>Fire rate</th><th>Between waves</th></tr></thead><tbody><tr><td>0:00</td><td>0</td><td>×1.00</td><td>×1.00</td><td>×1.00</td><td>3.2 s</td></tr><tr><td>1:00</td><td>1.25</td><td>×1.31</td><td>×1.03</td><td>×1.06</td><td>2.8 s</td></tr><tr><td>2:00</td><td>2.5</td><td>×1.75</td><td>×1.06</td><td>×1.13</td><td>2.4 s</td></tr><tr><td>3:00</td><td>3.75</td><td>×2.31</td><td>×1.09</td><td>×1.19</td><td>2 s</td></tr><tr><td>4:00</td><td>5</td><td>×3.00</td><td>×1.13</td><td>×1.25</td><td>1.6 s</td></tr><tr><td>5:00</td><td>6.25</td><td>×3.81</td><td>×1.16</td><td>×1.31</td><td>1.2 s</td></tr><tr><td>6:00</td><td>7.5</td><td>×4.75</td><td>×1.19</td><td>×1.38</td><td>0.8 s</td></tr><tr><td>7:00</td><td>8.75</td><td>×5.81</td><td>×1.22</td><td>×1.44</td><td>0.65 s</td></tr><tr><td>8:00</td><td>10</td><td>×7.00</td><td>×1.25</td><td>×1.50</td><td>0.65 s</td></tr><tr><td>9:00</td><td>11.25</td><td>×8.31</td><td>×1.28</td><td>×1.56</td><td>0.32 s</td></tr><tr><td>10:00</td><td>12.5</td><td>×9.75</td><td>×1.31</td><td>×1.63</td><td>0.32 s</td></tr></tbody></table>
+<p>Waves also get bigger: every 2.5 difficulty minutes adds more darts and swarmers to each wave, gunner rows grow from 2 to 4, and spinners come in pairs later on. <a href="system-omen.html">Bad Omen</a> makes regular enemies 10% tougher and waves 10% more frequent per level, in exchange for more XP and gold.</p>
+<h3>Boss health</h3>
+<p>Bosses are one target, so they scale gently: <code>HP = 500 × (1 + 0.6 × boss number) × (1 + 0.1 m)</code>, where the first boss is number 0.</p>
+<table class="wikitable "><thead><tr><th>Time</th><th>Boss</th><th>HP</th></tr></thead><tbody><tr><td>2:00</td><td>Boss 1</td><td>625</td></tr><tr><td>4:00</td><td>Boss 2</td><td>1200</td></tr><tr><td>6:00</td><td>Boss 3</td><td>1925</td></tr><tr><td>8:00</td><td>Boss 4</td><td>2800</td></tr></tbody></table>
+<p>Elites have 4 times the HP of a normal enemy of their kind. The Dreadnought in planet previews has 5000 HP.</p>
+<footer>orBIT Wiki. Every number here comes straight from the game's data.</footer>
+</main>
+</div>
+<script src="search.js"></script>
+</body>
+</html>
